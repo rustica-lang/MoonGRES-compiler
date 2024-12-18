@@ -22,12 +22,12 @@ Building a programming language is a long journey. It took Rust 9 years and Go 5
 
 ## Build from source
 
-## Prerequisites
+### Prerequisites
 
 - OCaml 4.14.2
 - [OPAM](https://opam.ocaml.org/)
 
-## Build
+### Build
 
 Build with following scripts:
 
@@ -66,5 +66,5 @@ In the past two years, our team worked hard to improve MoonBit and its toolchain
 
 We are grateful for the support of the community. 
 Special thanks to Jane Street for their excellent PPX libraries,
-this repo has used some of their PPX functions.
+this repo has used some of their [PPX functions](./src/hash.c).
 
