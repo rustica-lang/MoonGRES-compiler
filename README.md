@@ -37,6 +37,26 @@ opam install -y dune
 dune build -p moonbit-lang
 ```
 
+## Use Wasm-based MoonBit Compiler
+
+First, you need to install Node.js. Then, run the following commands in the root directory of this repository:
+
+```shell
+INSTALL_DIR="$HOME/.moon/bin"
+cp node/* "$INSTALL_DIR"
+mv "$INSTALL_DIR/moonc.js" "$INSTALL_DIR/moonc"
+mv "$INSTALL_DIR/moonfmt.js" "$INSTALL_DIR/moonfmt"
+mv "$INSTALL_DIR/mooninfo.js" "$INSTALL_DIR/mooninfo"
+chmod +x "$INSTALL_DIR/moonc"
+chmod +x "$INSTALL_DIR/moonfmt"
+chmod +x "$INSTALL_DIR/mooninfo"
+# rebundle core
+pushd "$HOME/.moon/lib/core"
+moon clean
+moon bundle --target all
+popd
+```
+
 ## Contributing
 
 The project is evolving extremely fast that it is not yet ready for massive community 

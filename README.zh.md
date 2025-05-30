@@ -37,6 +37,26 @@ opam install -y dune
 dune build -p moonbit-lang
 ```
 
+## 使用wasm版的MoonBit编译器
+
+首先需要安装nodejs, 然后在本仓库的根目录下执行以下命令
+
+```shell
+INSTALL_DIR="$HOME/.moon/bin"
+cp node/* "$INSTALL_DIR" -r
+mv "$INSTALL_DIR/moonc.js" "$INSTALL_DIR/moonc"
+mv "$INSTALL_DIR/moonfmt.js" "$INSTALL_DIR/moonfmt"
+mv "$INSTALL_DIR/mooninfo.js" "$INSTALL_DIR/mooninfo"
+chmod +x "$INSTALL_DIR/moonc"
+chmod +x "$INSTALL_DIR/moonfmt"
+chmod +x "$INSTALL_DIR/mooninfo"
+# 重新打包core
+pushd "$HOME/.moon/lib/core"
+moon clean
+moon bundle --target all
+popd
+```
+
 ## 贡献
 
 这个项目正在快速演进，因此还没有准备好接受大量社区贡献。
