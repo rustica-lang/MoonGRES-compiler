@@ -121,4 +121,4 @@ U=await
 H();var{caml_callback:d,caml_alloc_tm:n,caml_alloc_stat:x,caml_start_fiber:A,caml_handle_uncaught_exception:o,caml_buffer:y,caml_extract_string:z,string_get:R,string_set:S,_initialize:j}=U.instance.exports,h=y?.buffer,O=h&&new
 Uint8Array(h,0,h.length);t=q(A);var
 j=q(j);if(globalThis.process&&globalThis.process.on)globalThis.process.on("uncaughtException",(a,b)=>o(a));else if(globalThis.addEventListener)globalThis.addEventListener("error",a=>a.error&&o(a.error));await
-j()})(function(a){"use strict";return{}}(globalThis))({"link":[["code-6c8035bce4e61ed61677",0]],"generated":{},"src":"moonfmt.assets"});
+j()})(function(a){"use strict";return{}}(globalThis))({"link":[["code-4694e093b6584ea06ea0",0]],"generated":{},"src":"moonfmt.assets"});
