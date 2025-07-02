@@ -42,17 +42,30 @@ dune build -p moonbit-lang
 First, you need to install Node.js. Then, run the following commands in the root directory of this repository:
 
 ```shell
-INSTALL_DIR="$HOME/.moon/bin"
-cp node/* "$INSTALL_DIR"
-mv "$INSTALL_DIR/moonc.js" "$INSTALL_DIR/moonc"
-mv "$INSTALL_DIR/moonfmt.js" "$INSTALL_DIR/moonfmt"
-mv "$INSTALL_DIR/mooninfo.js" "$INSTALL_DIR/mooninfo"
-chmod +x "$INSTALL_DIR/moonc"
-chmod +x "$INSTALL_DIR/moonfmt"
-chmod +x "$INSTALL_DIR/mooninfo"
-# rebundle core
-pushd "$HOME/.moon/lib/core"
-moon clean
+mkdir -p $HOME/.moon
+MOON_VERSION=$(cat ./node/moon_version)
+MOON_HOME="$HOME/.moon"
+BIN_DIR="$MOON_HOME/bin"
+mkdir -p "$BIN_DIR"
+git clone https://github.com/moonbitlang/moon
+cd moon
+git reset --hard "$MOON_VERSION"
+cargo build --release
+cp target/release/moon "$BIN_DIR"
+pushd node
+cp moonc.js moonfmt.js mooninfo.js moonc.assets moonfmt.assets mooninfo.assets "$BIN_DIR" -r
+mv "$BIN_DIR/moonc.js" "$BIN_DIR/moonc"
+mv "$BIN_DIR/moonfmt.js" "$BIN_DIR/moonfmt"
+mv "$BIN_DIR/mooninfo.js" "$BIN_DIR/mooninfo"
+chmod +x "$BIN_DIR/moonc"
+chmod +x "$BIN_DIR/moonfmt"
+chmod +x "$BIN_DIR/mooninfo"
+cp lib include "$MOON_HOME"
+popd
+CORE_VERSION=$(cat ./node/core_version)
+git clone https://github.com/moonbitlang/core "$MOON_HOME/lib/core"
+pushd "$MOON_HOME/lib/core"
+git reset --hard "$CORE_VERSION"
 moon bundle --target all
 popd
 ```
