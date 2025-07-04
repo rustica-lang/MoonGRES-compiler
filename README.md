@@ -52,6 +52,7 @@ cd moon
 git reset --hard "$MOON_VERSION"
 cargo build --release
 cp target/release/moon "$BIN_DIR"
+cp target/release/moonrun "$BIN_DIR"
 pushd node
 cp moonc.js moonfmt.js mooninfo.js moonc.assets moonfmt.assets mooninfo.assets "$BIN_DIR" -r
 mv "$BIN_DIR/moonc.js" "$BIN_DIR/moonc"
