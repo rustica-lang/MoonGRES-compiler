@@ -55,6 +55,7 @@ git reset --hard "$MOON_VERSION"
 cargo build --release
 cp target/release/moon "$BIN_DIR"
 cp target/release/moonrun "$BIN_DIR"
+cd ..
 sed -i '1 i #!/usr/bin/env -S node --stack-size=4096' moonc.js
 sed -i '1 i #!/usr/bin/env -S node --stack-size=4096' moonfmt.js
 sed -i '1 i #!/usr/bin/env -S node --stack-size=4096' mooninfo.js
