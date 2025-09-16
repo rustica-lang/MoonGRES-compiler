@@ -56,9 +56,9 @@ cargo build --release
 cp target/release/moon "$BIN_DIR"
 cp target/release/moonrun "$BIN_DIR"
 cd ..
-sed -i '1 i #!/usr/bin/env -S node --stack-size=4096' moonc.js
-sed -i '1 i #!/usr/bin/env -S node --stack-size=4096' moonfmt.js
-sed -i '1 i #!/usr/bin/env -S node --stack-size=4096' mooninfo.js
+sed -i '1 i #!'"$(which env) -S node --stack-size=4096" moonc.js
+sed -i '1 i #!'"$(which env) -S node --stack-size=4096" moonfmt.js
+sed -i '1 i #!'"$(which env) -S node --stack-size=4096" mooninfo.js
 cp moonc.js moonfmt.js mooninfo.js moonc.assets moonfmt.assets mooninfo.assets "$BIN_DIR" -r
 mv "$BIN_DIR/moonc.js" "$BIN_DIR/moonc"
 mv "$BIN_DIR/moonfmt.js" "$BIN_DIR/moonfmt"
